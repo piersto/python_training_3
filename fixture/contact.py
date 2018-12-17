@@ -1,3 +1,6 @@
+from selenium.webdriver.support.select import Select
+
+
 class ContactHelper:
 
     def __init__(self, app):
@@ -17,6 +20,8 @@ class ContactHelper:
         wd.find_element_by_name("middlename").send_keys(contact.middlename)
         wd.find_element_by_name("lastname").clear()
         wd.find_element_by_name("lastname").send_keys(contact.lastname)
+        Select(wd.find_element_by_name("bday")).select_by_visible_text("1")
+        wd.find_element_by_name("bday").click()
         self.submit_contact_form()
         self.app.return_on_home_page()
 
