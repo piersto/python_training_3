@@ -18,7 +18,7 @@ class GroupHelper:
         self.return_to_groups_page()
 
     def fill_group_form(self, group):
-        wd = self.app
+        wd = self.app.wd
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
         wd.find_element_by_name("group_name").send_keys(group.name)
