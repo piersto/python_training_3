@@ -20,8 +20,10 @@ class ContactHelper:
 
     def specify_drop_downs(self, contact):
         wd = self.app.wd
-        Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.birthday)
-        Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contact.birth_month)
+        if contact.birthday is not None:
+            Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.birthday)
+        if contact.birth_month is not None:
+            Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contact.birth_month)
 
     def fill_contact_form(self, contact):
         wd = self.app.wd
