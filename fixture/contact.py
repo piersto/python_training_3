@@ -58,3 +58,11 @@ class ContactHelper:
         # return to home page
         self.app.return_on_home_page()
 
+    def count(self):
+        wd = self.app.wd
+        self.open_home_page()
+        return len(wd.find_elements_by_name("selected[]"))
+
+    def open_home_page(self):
+        wd = self.wd
+        wd.get("http://localhost/addressbook/")
