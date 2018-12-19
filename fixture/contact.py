@@ -13,6 +13,7 @@ class ContactHelper:
 
     def fill_in_contact_form(self, contact):
         wd = self.app.wd
+        self.open_add_new_contact_page()
         self.fill_contact_form(contact)
         self.specify_drop_downs(contact)
         self.submit_contact_form()
