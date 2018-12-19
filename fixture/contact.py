@@ -14,10 +14,14 @@ class ContactHelper:
     def fill_in_contact_form(self, contact):
         wd = self.app.wd
         self.fill_contact_form(contact)
-        Select(wd.find_element_by_name("bday")).select_by_visible_text("1")
-        wd.find_element_by_name("bday").click()
+        self.specify_drop_downs(contact)
         self.submit_contact_form()
         self.app.return_on_home_page()
+
+    def specify_drop_downs(self, contact):
+        wd = self.app.wd
+        Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.birthday)
+        Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contact.birth_month)
 
     def fill_contact_form(self, contact):
         wd = self.app.wd
@@ -53,6 +57,7 @@ class ContactHelper:
         wd.find_element_by_css_selector("img[alt=\"Edit\"]").click()
         # specify new data
         self.fill_contact_form(new_contact_data)
+        self.specify_drop_downs(new_contact_data)
         # click update button
         wd.find_element_by_name("update").click()
         # return to home page
