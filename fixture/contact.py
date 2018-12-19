@@ -64,5 +64,5 @@ class ContactHelper:
         return len(wd.find_elements_by_name("selected[]"))
 
     def open_home_page(self):
-        wd = self.wd
+        wd = self.app.wd
         wd.get("http://localhost/addressbook/")
